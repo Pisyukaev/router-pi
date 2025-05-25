@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Проверяем, что это наш I2C дисплей (адрес 0x3C)
+[ "$I2C_ADDRESS" = "3c" ] || exit 0
+
+case "$ACTION" in
+    add)
+        # Перезапускаем сервис при подключении дисплея
+        /etc/init.d/display_info restart
+        logger -t display "I2C display connected, restarting service"
+    ;;
+    remove)
+        logger -t display "I2C display disconnected"
+    ;;
+esac 
