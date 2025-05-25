@@ -135,7 +135,7 @@ def main():
         current_time = time.time()
         
         # Проверяем подключение дисплея
-        if not device or (current_time - last_reconnect > DISPLAY_RECONNECT_INTERVAL):
+        if not device and (current_time - last_reconnect > DISPLAY_RECONNECT_INTERVAL):
             device = init_display()
             last_reconnect = current_time
             
